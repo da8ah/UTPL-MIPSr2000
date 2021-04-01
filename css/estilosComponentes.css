@@ -1,0 +1,403 @@
+/* COMPONENTES */
+
+/* GENERAL */
+#componente-if,
+#componente-id,
+#componente-ex {
+    clear: both;
+    float: none;
+    margin-bottom: 10px;
+}
+
+#tipo-instruccion,
+#registrador {
+    display: inline-block;
+}
+
+/*********************************************************/
+
+/* COMPONENTE-IF */
+
+#componente-if h3 {
+    background-color: darkred;
+}
+
+/* CONTADOR */
+
+#contador {
+    background-color: blue;
+    height: 45px;
+    width: 170px;
+    border-radius: 5px;
+    border: black 10px double;
+    text-align: center;
+}
+
+#contador header {
+    background-color: black;
+    width: 100%;
+    color: white;
+    padding: 1% 0;
+    font-size: 1.2em;
+}
+
+#contador div {
+    background-color: white;
+    height: 20px;
+    width: 170px;
+}
+
+/* MEMORIA-INSTRUCCIONES */
+
+#memoria-instrucciones {
+    background-color: red;
+    height: 300px;
+    width: 250px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+#memoria-instrucciones header {
+    background-color: black;
+    width: 100%;
+    color: white;
+    padding: 1% 0;
+    font-size: 1.2em;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#memoria-instrucciones ol {
+    background-color: black;
+    width: 90%;
+    padding: 5%;
+    border-radius: 5px;
+    list-style-type: none;
+}
+
+#memoria-instrucciones ol li {
+    background-color: white;
+    height: 20px;
+    width: 100%;
+    margin: 2% 0;
+    padding: 0 0.5%;
+    text-align: justify;
+    word-spacing: 5px;
+    font-family: monospace;
+}
+
+#memoria-instrucciones .mi-inst-num {
+    float: left;
+    width: 50px;
+}
+
+/*********************************************************/
+
+/* COMPONENTE-ID */
+
+#componente-id h3 {
+    background-color: gray;
+}
+
+/* TIPO-INSTRUCCION */
+
+#tipo-instruccion {
+    background-color: royalblue;
+    height: 415px;
+    width: 600px;
+    padding: 5px;
+    text-align: left;
+}
+
+/* header */
+
+#tipo-instruccion header {
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 1% 0;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* tipo instruccion */
+
+#tipo-instruccion ul {
+    background-color: black;
+    padding: 0 3%;
+    margin: 0;
+    list-style-type: none;
+}
+
+#tipo-instruccion ul li {
+    background-color: white;
+    display: inline-block;
+    height: 20px;
+    width: 80px;
+    margin: 10px 0;
+    padding: 5px 0;
+    text-align: center;
+}
+
+/* circunferencias */
+
+#tipo-instruccion .tipo-inst {
+    height: 20px;
+    width: 30px;
+    border-radius: 100%;
+    border: black 2px solid;
+}
+
+#tipo-instruccion #if-i-const {
+    width: 245px;
+}
+
+#tipo-instruccion #if-j-dir {
+    width: 410px;
+}
+
+/* formato instruccion */
+
+#tipo-instruccion .format-inst {
+    background-color: black;
+    padding-left: 55px;
+    list-style-type: none;
+}
+
+#tipo-instruccion .format-inst li {
+    background-color: green;
+    color: black;
+    height: 20px;
+    width: 80px;
+    margin: 0 0 20px 0;
+    padding: 0;
+    text-align: center;
+    display: inline-block;
+}
+
+#tipo-instruccion #format-inst-i-const {
+    width: 245px;
+}
+
+#tipo-instruccion #format-inst-j-dir {
+    width: 410px;
+}
+
+/* footer */
+
+#tipo-instruccion #bits-inst {
+    padding-left: 55px;
+}
+
+#tipo-instruccion #bits-inst li {
+    background-color: blue;
+    color: white;
+}
+
+#tipo-instruccion #bits-inst #bits-totales {
+    background-color: red;
+    color: black;
+    width: 495px;
+    margin-top: 0;
+}
+
+/* REGISTRER-FILE */
+
+#registrador {
+    background-color: cadetblue;
+    height: 315px;
+    width: 600px;
+    margin: 0;
+    padding: 5px;
+    text-align: left;
+}
+
+/* header */
+
+#registrador header {
+    background-color: black;
+    color: white;
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 1% 0;
+    font-size: 1.2em;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* registrador */
+
+#registrador ul {
+    background-color: black;
+    padding: 1% 3%;
+    margin: 0;
+    list-style-type: none;
+}
+
+#registrador ul li {
+    background-color: white;
+    display: inline-block;
+    height: 20px;
+    width: 50px;
+    margin: 0 5px;
+    padding: 5px;
+    font-size: 1em;
+    text-align: center;
+}
+
+/* circunferencias */
+
+#registrador .rf-entrada-estado,
+#registrador .rf-salida-estado {
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+    border: white 2px solid;
+}
+
+/* segmentos R-W */
+
+#registrador .rf-segmento-read {
+    background-color: royalblue;
+    color: white;
+    width: 125px;
+    text-align: left;
+    border-radius: 5px;
+    border: white 2px solid;
+    font-family: "Courier New", "Courier", monospace;
+}
+
+#registrador .rf-segmento-write {
+    background-color: darkred;
+    color: white;
+    width: 50px;
+    text-align: left;
+    border-radius: 5px;
+    border: white 2px solid;
+    font-family: "Courier New", "Courier", monospace;
+}
+
+/* descripciones */
+
+#registrador .rf-descripcion {
+    padding-left: 240px;
+}
+
+#registrador .rf-desc {
+    background-color: darkblue;
+    color: white;
+    height: 10px;
+    width: 70px;
+    font-size: 0.8em;
+    border-radius: 100px;
+    border: white 2px solid;
+    font-family: "Courier", monospace;
+}
+
+#registrador .rf-desc-dir {
+    background-color: darkblue;
+    color: white;
+    height: 10px;
+    width: 50px;
+    font-size: 0.8em;
+    margin-right: 90px;
+    border-radius: 100px;
+    border: white 2px solid;
+    font-family: "Courier", monospace;
+}
+
+#registrador .rf-dir {
+    width: 100px;
+}
+
+#registrador .rf-value {
+    width: 200px;
+}
+
+/*********************************************************/
+
+/* COMPONENTE-EX */
+
+#componente-ex h3 {
+    background-color: darkviolet;
+}
+
+/* ARITHMETIC-LOGIC-UNIT */
+
+#arithmetic-logic-unit {
+    background-color: red;
+    height: 255px;
+    width: 490px;
+    padding: 5px;
+    text-align: left;
+    border-radius: 10px;
+    border: darkred 3px solid;
+}
+
+/* header */
+
+#arithmetic-logic-unit header {
+    background-color: white;
+    color: black;
+    width: 100%;
+    padding: 1% 0;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* alu */
+
+#arithmetic-logic-unit ul {
+    background-color: darkred;
+    padding: 1% 3%;
+    margin: 0;
+    border-radius: 10px;
+    list-style-type: none;
+    border: white 2px solid;
+}
+
+#arithmetic-logic-unit .alu-value,
+#arithmetic-logic-unit #alu-resultado {
+    background-color: white;
+    height: 20px;
+    width: 200px;
+    margin: 1px 5px;
+    padding: 5px;
+    font-size: 1em;
+    text-align: center;
+}
+
+#arithmetic-logic-unit .alu-desc {
+    background-color: darkblue;
+    color: white;
+    height: 10px;
+    width: 70px;
+    margin: 5px;
+    padding: 5px;
+    font-size: 0.8em;
+    text-align: center;
+    border-radius: 100px;
+    border: white 2px solid;
+    font-family: "Courier", monospace;
+}
+
+#arithmetic-logic-unit #alu-operando {
+    background-color: transparent;
+    color: white;
+    font-size: 2em;
+    text-align: right;
+    margin: 0 10px 0 200px;
+}
+
+#arithmetic-logic-unit #alu-operando,
+#arithmetic-logic-unit #alu-resultado {
+    display: inline-block;
+}
+
+#arithmetic-logic-unit #alu-desc-resultado {
+    margin-left: 300px;
+}

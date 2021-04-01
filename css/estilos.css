@@ -1,0 +1,321 @@
+/* GENERAL */
+
+body {
+    background-image: url("../img/fondo.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/****************/
+
+/* HEADER */
+
+/****************/
+
+#contenido-header {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.8);
+    min-height: 210px;
+    min-width: 880px;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    font-size: 1em;
+    text-align: center;
+    font-family: cursive;
+}
+
+#contenido-header h1 {
+    clear: both;
+    background-color: white;
+    color: black;
+    margin: 10px 0;
+    padding: 1% 0;
+    font-size: 5em;
+    text-align: center;
+    border-radius: 10px;
+    font-family: serif;
+}
+
+#contenido-header div {
+    color: white;
+    width: 30%;
+    text-align: center;
+    display: inline-block;
+}
+
+#contenido-header #div-utpl {
+    display: inline-block;
+}
+
+#contenido-header #div-utpl {
+    width: 300px;
+}
+
+#contenido-header div span {
+    color: darkred;
+    font-size: 1.1em;
+}
+
+h2 {
+    background-color: white;
+    width: 100%;
+    color: black;
+    padding: 1% 0;
+    margin: 3% 0;
+    font-size: 2em;
+    text-align: center;
+}
+
+.componentes h3 {
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding: 0.5% 0;
+    font-size: 2em;
+    text-align: center;
+}
+
+#procedimiento {
+    border: black 10px double;
+    text-transform: uppercase;
+    font-family: "Impact", "Charcoal", sans-serif;
+}
+
+#navegacion {
+    background-color: black;
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+    z-index: 1;
+}
+
+#navegacion #nav-div-aux {
+    background-color: black;
+    width: 100%;
+    position: relative;
+    display: none;
+}
+
+#navegacion #reiniciar {
+    float: left;
+    background-color: darkcyan;
+    height: 30px;
+    width: 90px;
+    margin: 40px -100px 0 20px;
+    border-radius: 100px;
+}
+
+#navegacion #documento {
+    background-image: url("../img/pdf.png");
+    background-size: contain;
+    height: 50px;
+    width: 50px;
+    float: left;
+    margin: 20px -400px 0 200px;
+    border-radius: 100%;
+}
+
+#navegacion #paso-siguiente {
+    border-radius: 0 100% 100% 0;
+}
+
+#navegacion #paso-continuo {
+    background-color: darkred;
+    height: 80px;
+    width: 80px;
+    margin: 5px;
+    border-radius: 100%;
+}
+
+#navegacion #paso-anterior {
+    border-radius: 100% 0 0 100%;
+}
+
+#navegacion .pasos {
+    background-color: darkblue;
+    color: white;
+    height: 50px;
+    width: 80px;
+    border-radius: 5px;
+    border: white 2px solid;
+    text-transform: uppercase;
+    outline: none;
+}
+
+#navegacion form {
+    float: right;
+    margin: 20px 20px 0 -160px;
+}
+
+#navegacion form #header-velocidad {
+    color: white;
+    font-size: 0.8em;
+    font-family: monospace;
+    margin-bottom: 2px;
+}
+
+#navegacion form #in-velocidad,
+#navegacion form #btn-velocidad {
+    display: inline-block;
+    text-align: center;
+}
+
+#navegacion form #in-velocidad {
+    height: 20px;
+    width: 110px;
+    border: white 2px solid;
+}
+
+#navegacion form #trampa {
+    position: fixed;
+    height: 0;
+    width: 0;
+    top: 0;
+    right: 0;
+    visibility: hidden;
+}
+
+#navegacion form #btn-velocidad {
+    background-color: darkcyan;
+    color: black;
+    height: 26px;
+    width: 40px;
+    border: white 1px solid;
+}
+
+#navegacion #barra-pasos {
+    background-color: white;
+    width: 100%;
+    height: 10px;
+}
+
+#navegacion #barra-pasos #barra-pasos-estado {
+    background-color: royalblue;
+    height: 10px;
+    width: 0;
+    border-radius: 0 100px 100px 0;
+}
+
+#navegacion .pasos:hover,
+#navegacion #barra-pasos:hover {
+    cursor: pointer;
+}
+
+/* CONSOLA */
+
+#consola,
+#diagrama {
+    display: inline-block;
+}
+
+#cl-table {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: black;
+    width: 900px;
+    padding: 2% 1%;
+    font-family: sans-serif;
+    font-size: 100%;
+    border-radius: 10px;
+}
+
+#consola table th {
+    background-color: black;
+    color: white;
+    padding: 1%;
+    text-transform: uppercase;
+}
+
+#consola table tr {
+    text-transform: lowercase;
+    border-top: black 2px solid;
+    border-bottom: black 2px solid;
+}
+
+#consola table tr td {
+    background-color: white;
+    height: 20px;
+    line-height: normal;
+    padding: 0 20px;
+}
+
+#consola table tr td table tr td {
+    background-color: transparent;
+}
+
+#consola .bloque {
+    vertical-align: top;
+    text-transform: capitalize;
+}
+
+#consola .instrucciones {
+    width: 300px;
+}
+
+#consola .descripcion {
+    width: 400px;
+}
+
+/****************/
+
+/* FOOTER */
+
+/****************/
+
+#contenido-footer {
+    clear: both;
+    max-height: 240px;
+    min-width: 900px;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 2%;
+    text-align: center;
+    border-radius: 0 0 100px 100px;
+}
+
+#contenido-footer section:first-child {
+    clear: both;
+    color: white;
+    padding: 2% 15% 0 15%;
+    font-size: 75%;
+    border-top: darkorange 2px solid;
+    border-bottom: darkorange 1px solid;
+}
+
+#contenido-footer #derechos-autor img {
+    border-radius: 5px;
+    width: 15%;
+    margin: 0 42.5%;
+}
+
+#contenido-footer #redes-sociales {
+    clear: both;
+    color: black;
+    padding: 0;
+}
+
+#contenido-footer #redes-sociales nav {
+    background-color: white;
+    border-top: black 2px solid;
+    border-bottom: black 2px solid;
+    border-radius: 0 0 70px 70px;
+}
+
+#contenido-footer #redes-sociales nav ul {
+    list-style-type: none;
+}
+
+#contenido-footer #redes-sociales nav ul li {
+    display: inline-block;
+    margin: 0 5%;
+}
+
+@media (max-width: 955px) {
+
+    #procedimiento {
+        border: none;
+        min-width: 900px;
+    }
+
+    #contenido-header {
+        margin-bottom: 10px;
+    }
+}

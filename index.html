@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>UTPL | MIPS (Simulador)</title>
+        <script type="text/javascript" src="src/jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="src/caminoDatos.js"></script>
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <link rel="stylesheet" href="css/estilos.css">
+        <link rel="stylesheet" href="css/estilosDiagrama.css">
+        <link rel="stylesheet" href="css/estilosComponentes.css">
+    </head>
+
+    <body>
+
+        <noscript>Es necesario activar JavaScript para el correcto funcionamiento del simulador.</noscript>
+
+        <header id="contenido-header">
+            <h1>MIPS</h1>
+            <div id="div-utpl"><a href="http://www.utpl.edu.ec/"><img id="utpl" src="img/utpl.png" alt="UTPL"></a></div>
+        </header>
+
+        <section id="procedimiento">
+
+            <!-- NAVEGACIÓN -->
+            <div id="nav-div-aux"></div>
+            <nav id="navegacion">
+                <button id="reiniciar" class="pasos">Reiniciar</button>
+                <button id="paso-anterior" class="pasos">Back</button>
+                <button id="paso-continuo" class="pasos">Play</button>
+                <button id="paso-siguiente" class="pasos">Next</button>
+                <a title="Documentación" id="documento" href="./doc/UTPL_MIPSr2000_Simulador.pdf" target="_blank"></a>
+                <form action="#" method="post" target="valor">
+                    <header id="header-velocidad">Velocidad de Reproducción<br>(segundos 0.1 - 15)</header>
+                    <input id="in-velocidad" type="text" name="velocidadEjecucion">
+                    <iframe id="trampa" name="valor"></iframe>
+                    <button id="btn-velocidad" onclick="cambiarVelocidadTiempoPaso(parseFloat($('#in-velocidad').val()))">>>></button>
+                </form>
+                <div id="barra-pasos">
+                    <div id="barra-pasos-estado"></div>
+                </div>
+            </nav>
+
+            <h2 id="interfaz">Interfaz</h2>
+
+            <!-- DIAGRAMA -->
+
+            <section id="diagrama">
+
+                <!-- Para dar información general -->
+                <header>
+                    <ul>
+                        <li title="Instruction Fetch" class="diagram-header-f" style="border-radius: 15px 0 0 0">F</li>
+                        <li title="Instruction Decode" class="diagram-header-d">D</li>
+                        <li title="Execution" class="diagram-header-x">X</li>
+                        <li title="Memory Access" class="diagram-header-m">M</li>
+                        <li title="Write Back" class="diagram-header-w" style="border-radius: 0 15px 0 0">W</li>
+                    </ul>
+                    <ul class="transicion">
+                        <li title="Instruction Fetch" class="diagram-header-f"></li>
+                        <li title="Instruction Decode" class="diagram-header-d"></li>
+                        <li title="Execution" class="diagram-header-x"></li>
+                        <li title="Memory Access" class="diagram-header-m"></li>
+                        <li title="Write Back" class="diagram-header-w"></li>
+                    </ul>
+                    <ul>
+                        <li title="Instruction Fetch" class="diagram-header-f">IF</li>
+                        <li title="Instruction Decode" class="diagram-header-d">ID</li>
+                        <li title="Execution" class="diagram-header-x">EX</li>
+                        <li title="Memory Access" class="diagram-header-m">MEM</li>
+                        <li title="Write Back" class="diagram-header-w">WB</li>
+                    </ul>
+                </header>
+
+                <!-- CABLEADO SUPERIOR -->
+                <section id="cableado-superior">
+                    <div id="cable1-cs" class="cables-componentes"></div>
+                </section>
+
+                <!-- ETAPA 1 -->
+                <section title="Instruction Fetch" id="etapa1" style="border-radius: 0 0 0 10px">
+                    <div id="cableVertical1-e1" class="cables-componentes"></div>
+                    <div id="cableVertical2-e1" class="cables-componentes"></div>
+                    <div id="cableHorizontal1-e1" class="cables-componentes"><div id="punta1-e1" class="punta"></div></div>
+                    <div id="cableHorizontal2-e1" class="cables-componentes"><div id="punta2-e1" class="punta"></div></div>
+                    <div id="cableHorizontal3-e1" class="cables-componentes"><div id="nodo1-e1" class="nodo"></div></div>
+                    <div id="cableHorizontal4-e1" class="cables-componentes"><div id="punta3-e1" class="punta"></div></div>
+                    <div id="cableHorizontal5-e1" class="cables-componentes"><div id="punta4-e1" class="punta"></div></div>
+                    <div id="pc" class="cables-componentes"></div>
+                    <div id="adder" class="cables-componentes"></div>
+                    <div id="memory1" class="cables-componentes"></div>
+                </section>
+
+                <!-- ETAPA 2 -->
+                <section title="Instruction Decode" id="etapa2">
+                    <div id="cableVertical1-e2" class="cables-componentes"></div>
+                    <div id="cableVertical2-e2" class="cables-componentes"></div>
+                    <div id="cableVertical3-e2" class="cables-componentes"></div>
+                    <div id="cableHorizontal1-e2" class="cables-componentes"><div id="punta6-e2" class="punta"></div></div>
+                    <div id="cableHorizontal2-e2" class="cables-componentes"></div>
+                    <div id="cableHorizontal3-e2" class="cables-componentes"><div id="punta1-e2" class="punta"></div></div>
+                    <div id="cableHorizontal4-e2" class="cables-componentes"><div id="punta2-e2" class="punta"></div><div id="nodo1-e2" class="nodo"></div></div>
+                    <div id="cableHorizontal5-e2" class="cables-componentes"><div id="punta5-e2" class="punta"></div><div id="nodo2-e2" class="nodo"></div></div>
+                    <div id="cableHorizontal6-e2" class="cables-componentes"><div id="punta9-e2" class="punta"></div></div>
+                    <div id="cableHorizontal7-e2" class="cables-componentes"><div id="punta3-e2" class="punta"></div></div>
+                    <div id="cableHorizontal8-e2" class="cables-componentes"><div id="punta4-e2" class="punta"></div></div>
+                    <div id="cableHorizontal9-e2" class="cables-componentes"><div id="punta7-e2" class="punta"></div></div>
+                    <div id="cableHorizontal10-e2" class="cables-componentes"><div id="punta8-e2" class="punta"></div></div>
+                    <div id="if-id" class="cables-componentes"></div>
+                    <div id="rf" class="cables-componentes"></div>
+                    <div id="sign-extend" class="cables-componentes"></div>
+                </section>
+
+                <!-- ETAPA 3 -->
+                <section title="Execution" id="etapa3">
+                    <div id="cableVertical1-e3" class="cables-componentes"></div>
+                    <div id="cableVertical2-e3" class="cables-componentes"></div>
+                    <div id="cableVertical3-e3" class="cables-componentes"></div>
+                    <div id="cableHorizontal1-e3" class="cables-componentes"><div id="punta8-e3" class="punta"></div><div id="nodo3-e3" class="nodo"></div></div>
+                    <div id="cableHorizontal2-e3" class="cables-componentes"><div id="punta2-e3" class="punta"></div><div id="nodo1-e3" class="nodo"></div></div>
+                    <div id="cableHorizontal3-e3" class="cables-componentes"><div id="punta3-e3" class="punta"></div></div>
+                    <div id="cableHorizontal4-e3" class="cables-componentes"><div id="punta4-e3" class="punta"></div><div id="nodo2-e3" class="nodo"></div></div>
+                    <div id="cableHorizontal5-e3" class="cables-componentes"><div id="punta12-e3" class="punta"></div></div>
+                    <div id="cableHorizontal6-e3" class="cables-componentes"><div id="punta5-e3" class="punta"></div></div>
+                    <div id="cableHorizontal7-e3" class="cables-componentes"><div id="punta11-e3" class="punta"></div></div>
+                    <div id="cableHorizontal8-e3" class="cables-componentes"><div id="punta1-e3" class="punta"></div></div>
+                    <div id="cableHorizontal9-e3" class="cables-componentes"><div id="punta6-e3" class="punta"></div></div>
+                    <div id="cableHorizontal10-e3" class="cables-componentes"><div id="punta7-e3" class="punta"></div></div>
+                    <div id="cableHorizontal11-e3" class="cables-componentes"><div id="punta9-e3" class="punta"></div></div>
+                    <div id="cableHorizontal12-e3" class="cables-componentes"><div id="punta10-e3" class="punta"></div></div>
+                    <div id="id-ex" class="cables-componentes"></div>
+                    <div id="mux1" class="cables-componentes"></div>
+                    <div id="mux2" class="cables-componentes"></div>
+                    <div id="zero" class="cables-componentes"></div>
+                    <div id="alu" class="cables-componentes"></div>
+                </section>
+
+                <!-- ETAPA 4 -->
+                <section title="Memory Access" id="etapa4">
+                    <div id="cableVertical1-e4" class="cables-componentes"></div>
+                    <div id="cableVertical2-e4" class="cables-componentes"></div>
+                    <div id="cableHorizontal1-e4" class="cables-componentes"><div id="punta1-e4" class="punta"></div></div>
+                    <div id="cableHorizontal2-e4" class="cables-componentes"><div id="punta3-e4" class="punta"></div><div id="nodo1-e4" class="nodo"></div></div>
+                    <div id="cableHorizontal3-e4" class="cables-componentes"><div id="punta4-e4" class="punta"></div></div>
+                    <div id="cableHorizontal4-e4" class="cables-componentes"><div id="punta7-e4" class="punta"></div></div>
+                    <div id="cableHorizontal5-e4" class="cables-componentes"><div id="punta2-e4" class="punta"></div></div>
+                    <div id="cableHorizontal6-e4" class="cables-componentes"><div id="punta6-e4" class="punta"></div></div>
+                    <div id="cableHorizontal7-e4" class="cables-componentes"></div>
+                    <div id="cableHorizontal8-e4" class="cables-componentes"><div id="punta5-e4" class="punta"></div></div>
+                    <div id="ex-mem" class="cables-componentes"></div>
+                    <div id="mux3" class="cables-componentes"></div>
+                    <div id="memory2" class="cables-componentes"></div>
+                </section>
+
+                <!-- ETAPA 5 -->
+                <section title="Write Back" id="etapa5" style="border-radius: 0 0 10px 0">
+                    <div id="cableVertical1-e5" class="cables-componentes"></div>
+                    <div id="cableVertical2-e5" class="cables-componentes"></div>
+                    <div id="cableHorizontal1-e5" class="cables-componentes"><div id="punta1-e5" class="punta"></div></div>
+                    <div id="cableHorizontal2-e5" class="cables-componentes"><div id="punta2-e5" class="punta"></div></div>
+                    <div id="cableHorizontal3-e5" class="cables-componentes"></div>
+                    <div id="cableHorizontal4-e5" class="cables-componentes"></div>
+                    <div id="mem-wb" class="cables-componentes"></div>
+                    <div id="mux4" class="cables-componentes"></div>
+                </section>
+
+                <!-- CABLEADO INFERIOR -->
+                <section id="cableado-inferior">
+                    <div id="cable1-ci" class="cables-componentes"></div>
+                    <div id="cable2-ci" class="cables-componentes"></div>
+                </section>
+
+            </section>
+
+
+
+
+            <!-- CONSOLA -->
+
+            <section id="consola">
+
+                <table id="cl-table">
+                    <tr>
+                        <th style="border-radius: 10px 0 0 0">Bloque</th>
+                        <th>Instrucciones</th>
+                        <th style="border-radius: 0 10px 0 0">Descripción</th>
+                    </tr>
+                </table>
+
+            </section>
+
+
+
+            <!-- COMPONENTE If -->
+
+            <section id="componente-if" class="componentes">
+                <h3>IF</h3>
+                <section id="contador">
+                    <header>Program Counter</header>
+                    <div id="pc-contador"></div>
+                </section>
+
+                <section id="memoria-instrucciones">
+                    <header>Instructions</header>
+                    <ol></ol>
+                </section>
+
+            </section>
+
+
+
+            <!-- COMPONENTE ID -->
+
+            <section id="componente-id" class="componentes">
+                <h3>ID</h3>
+                <section id="tipo-instruccion">
+                    <header>Instruction Format</header>
+                    <ul>
+                        <li id="tipo-inst-r" class="tipo-inst">R</li>
+                        <li id="if-r-op"></li>
+                        <li id="if-r-rs"></li>
+                        <li id="if-r-rt"></li>
+                        <li id="if-r-rd"></li>
+                        <li id="if-r-shamt"></li>
+                        <li id="if-r-funct"></li>
+                    </ul>
+                    <ul id="format-inst-r" class="format-inst">
+                        <li>op</li>
+                        <li>rs</li>
+                        <li>rt</li>
+                        <li>rd</li>
+                        <li>shamt</li>
+                        <li>funct</li>
+                    </ul>
+                    <ul>
+                        <li id="tipo-inst-i" class="tipo-inst">I</li>
+                        <li id="if-i-op"></li>
+                        <li id="if-i-rs"></li>
+                        <li id="if-i-rt"></li>
+                        <li id="if-i-const"></li>
+                    </ul>
+                    <ul id="format-inst-i" class="format-inst">
+                        <li>op</li>
+                        <li>rs</li>
+                        <li>rt</li>
+                        <li id="format-inst-i-const">const o dir</li>
+                    </ul>
+                    <ul>
+                        <li id="tipo-inst-j" class="tipo-inst">J</li>
+                        <li id="if-j-op"></li>
+                        <li id="if-j-dir"></li>
+                    </ul>
+                    <ul id="format-inst-j" class="format-inst">
+                        <li>op</li>
+                        <li id="format-inst-j-dir">dir</li>
+                    </ul>
+                    <footer>
+                        <ul id="bits-inst">
+                            <li>6 bits</li>
+                            <li>5 bits</li>
+                            <li>5 bits</li>
+                            <li>5 bits</li>
+                            <li>5 bits</li>
+                            <li>6 bits</li>
+                            <li id="bits-totales">32 bits</li>
+                        </ul>
+                    </footer>
+                </section>
+
+                <section id="registrador">
+                    <header>Register File</header>
+                    <ul>
+                        <li class="rf-entrada-estado"></li>
+                        <li class="rf-segmento-read">Read A</li>
+                        <li id="rf-readA-dir" class="rf-dir"></li>
+                        <li id="rf-readA-value" class="rf-value"></li>
+                    </ul>
+                    <ul class="rf-descripcion">
+                        <li class="rf-desc-dir">dir A</li>
+                        <li class="rf-desc">value A</li>
+                    </ul>
+                    <ul>
+                        <li class="rf-entrada-estado"></li>
+                        <li class="rf-segmento-read">Read B</li>
+                        <li id="rf-readB-dir" class="rf-dir"></li>
+                        <li id="rf-readB-value" class="rf-value"></li>
+                    </ul>
+                    <ul class="rf-descripcion">
+                        <li class="rf-desc-dir">dir B</li>
+                        <li class="rf-desc">value B</li>
+                    </ul>
+                    <ul>
+                        <li id="rf-writeD-estado" class="rf-salida-estado"></li>
+                        <li class="rf-segmento-write">Write</li>
+                        <li class="rf-desc">dir</li>
+                        <li id="rf-write-dir" class="rf-dir"></li>
+                    </ul>
+                    <ul>
+                        <li id="rf-writeV-estado" class="rf-salida-estado"></li>
+                        <li class="rf-segmento-write">Write</li>
+                        <li class="rf-desc">value</li>
+                        <li id="rf-write-value" class="rf-value"></li>
+                    </ul>
+                </section>
+
+            </section>
+
+
+
+            <!-- COMPONENTE EX -->
+
+            <section id="componente-ex" class="componentes">
+                <h3>EX</h3>
+                <section id="arithmetic-logic-unit">
+                    <header>Arithmetic - Logic Unit</header>
+                    <ul>
+                        <li id="alu-valueA" class="alu-value"></li>
+                        <li class="alu-desc">value A</li>
+                        <li id="alu-operando"></li>
+                        <li id="alu-resultado"></li>
+                        <li id="alu-desc-resultado" class="alu-desc">result</li>
+                        <li id="alu-valueB" class="alu-value"></li>
+                        <li class="alu-desc">value B</li>
+                    </ul>
+                </section>
+
+            </section>
+
+        </section>
+
+        <footer id="contenido-footer">
+            <section id="derechos-autor">
+                <div>Universidad Técnica Particular de Loja - ( Loja - Ecuador )</div><br>
+                <div>© El contenido de esta obra es de propiedad intelectual de la UTPL. Todos los derechos reservados. Prohibida su reproducción total o parcial, comunicación pública o distribución sin autorización previa del titular de los derechos.</div><br>
+                <img src="img/cc.png" alt="Creative Comons">
+                <div id="linea-gratuita">San Cayetano Alto - Loja Ecuador • Línea Gratuita: 1800 8875 8875</div><br>
+            </section>
+            <section id="redes-sociales">
+                <nav>
+                    <ul>
+                        <li><a href="https://www.facebook.com/utpl.loja" target="_blank"><img src="img/fb.png" alt="Facebook"></a></li>
+                        <li><a href="https://twitter.com/utpl" target="_blank"><img src="img/tt.png" alt="Twitter"></a></li>
+                        <li><a href="https://www.instagram.com/utpl/" target="_blank"><img src="img/ig.png" alt="Instagram"></a></li>
+                        <li><a href="https://plus.google.com/+UTPLoficial" target="_blank"><img src="img/gplus.png" alt="Google Plus"></a></li>
+                        <li><a href="https://www.youtube.com/user/utpl" target="_blank"><img src="img/yt.png" alt="Youtube"></a></li>
+                        <li><a href="https://www.flickr.com/photos/utpl" target="_blank"><img src="img/fkr.png" alt="Flickr"></a></li>
+                    </ul>
+                </nav>
+            </section>
+        </footer>
+
+    </body>
+
+</html>
